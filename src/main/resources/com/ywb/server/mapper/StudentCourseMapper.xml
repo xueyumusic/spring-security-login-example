@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ywb.server.mapper.StudentCourseMapper">
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+	INSERT INTO student_course (student_id, course_id)  VALUES
+	<foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+	#{item.student_id}, #{item.course_id}
+	</foreach>
+	</insert>
+</mapper>

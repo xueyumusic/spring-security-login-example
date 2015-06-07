@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ywb.server.mapper.LessonMapper">
+	
+	<insert id="insertSummary" parameterType="com.ywb.server.beans.Lesson">
+	INSERT INTO lesson (course_id, summary_text,summary_photo,summary_video) VALUES 
+			(#{course_id}, 
+			#{summary_text},
+			#{summary_photo, jdbcType=ARRAY, typeHandler=com.ywb.server.utils.StringArrayTypeHandler, mode=IN},
+			#{summary_video})
+	</insert>
+	
+	<update id="updateSummary" parameterType="com.ywb.server.beans.Lesson">
+	UPDATE lesson SET summary_text=#{summary_text},
+			summary_photo=#{summary_photo, jdbcType=ARRAY, typeHandler=com.ywb.server.utils.StringArrayTypeHandler, mode=IN},
+			summary_video=#{summary_video},
+			WHERE id=#{id}
+	</update>
+
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ywb.server.mapper.TeacherBatchMapper">
+	<cache />
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+	INSERT INTO teacher (name, age, gender, contact) VALUES
+	<foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+	#{item.name}, #{item.age}, #{item.gender}, #{item.contact}
+	</foreach>
+	</insert>
+</mapper>
